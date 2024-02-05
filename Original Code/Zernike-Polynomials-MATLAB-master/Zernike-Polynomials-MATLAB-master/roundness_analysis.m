@@ -1,0 +1,11 @@
+targetInd = [lostTracks(:).id] == 51;
+track1 = lostTracks(targetInd);
+centroid1 = double(track1.bbox(:, 1:2) - track1.bbox(:, 3:4)/2);
+[idx, c, sumd] = kmeans(centroid1, 3, 'Distance', 'cityblock');
+scatter(centroid1(1:3:end, 1), centroid1(1:3:end, 2));xlabel('pixels(×0.15μm)');ylabel('pixels(×0.15μm)');
+title('translational motion of a untrapped cell');
+hold;
+% scatter(C(:, 1), C(:, 2));
+xlim([min(centroid1(:, 1)) - 100, max(centroid1(:, 2)) + 100]);
+count = [sum(idx(:) == 1); sum(idx(:) == 2); sum(idx(:) == 3)];
+averageDistance = sumd./count;
