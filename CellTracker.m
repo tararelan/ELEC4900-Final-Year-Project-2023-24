@@ -1,6 +1,6 @@
 function [numCells, largestInd, dataBBox, tracks, lostTracks] = CellTracker()
 
-    folder = "C:\Users\tararelan\OneDrive - HKUST Connect\FYP\Videos\2023_11_16\Processed Video\";
+    folder = "";    % Processed video folder
     filename = "20231116 5ulhr  0.5W b_2023-11-16T20-32-57.004_processed.mp4";
 
     input_file = folder + filename;
@@ -20,7 +20,7 @@ function [numCells, largestInd, dataBBox, tracks, lostTracks] = CellTracker()
 
 
     % transform frames to videos
-    outputVideo_mask = VideoWriter(fullfile('C:\Users\tararelan\OneDrive\Documents\MATLAB\ELEC4900\output video\', filename + ' output.avi'));
+    outputVideo_mask = VideoWriter(fullfile('output video\', filename + ' output.avi'));
 
     % outputVideo.FrameRate = obj.reader.FrameRate;
     outputVideo_mask.FrameRate = obj.reader.FrameRate;
